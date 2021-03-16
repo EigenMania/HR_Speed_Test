@@ -7,7 +7,9 @@ using Toybox.Activity;
 using Toybox.Timer;
 
 class HR_Speed_TestView extends WatchUi.View {
-    private var split_time = 1 * 10;
+    private var current_activity_info;
+    
+    private var split_time = 1 * 30;
     private var split_counter = split_time;
     
     private var start_speed = 8.0;
@@ -16,8 +18,12 @@ class HR_Speed_TestView extends WatchUi.View {
 	private var desired_speed = start_speed;
 	private var current_speed = 0.0;
 	
+	private var split_speed = 0.0;
+	private var n_split = 0;
+	
     function initialize() {
     	System.println("initialize()...");
+        me.current_activity_info = Toybox.Activity.getActivityInfo();
         View.initialize();
     }
 
@@ -36,7 +42,12 @@ class HR_Speed_TestView extends WatchUi.View {
     }
 
 	function timerCallback() {
+	    // Update activity info
+        loadNewActivityInfo();
+        
 		me.split_counter -= 1;
+		
+		updateSplitSpeed();
 		
 		if (me.split_counter < 0) {
             levelUp();
@@ -45,8 +56,24 @@ class HR_Speed_TestView extends WatchUi.View {
 		WatchUi.requestUpdate();		
 	}
 
+    function loadNewActivityInfo() {
+        me.current_activity_info = Toybox.Activity.getActivityInfo();
+        me.current_speed = me.current_activity_info.currentSpeed * 3.6;
+    }
+
+    function updateSplitSpeed() {
+        if (me.n_split == 0) {
+            me.split_speed = me.current_speed;
+        } else {
+            me.split_speed = (me.split_speed * me.n_split + me.current_speed) / (me.n_split + 1);
+        }
+        me.n_split += 1;
+    }
+
     function levelUp() {
-        me.split_counter = me.split_time; // Reset split counter
+        // Reset split counters and increment target speed
+        me.split_counter = me.split_time;
+        me.n_split = 0;
         me.desired_speed += me.speed_increment;
     }
 
@@ -62,18 +89,21 @@ class HR_Speed_TestView extends WatchUi.View {
     function onUpdate(dc) {
     	System.println("onUpdate...");
 
-		var current_activity_info = Toybox.Activity.getActivityInfo();
-		me.current_speed = current_activity_info.currentSpeed * 3.6;
+		me.current_speed = me.current_activity_info.currentSpeed * 3.6;
     	    	
         // Update the view
         var curSpeedView = View.findDrawableById("CurSpeedLabel");
         curSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
         curSpeedView.setText(me.current_speed.format("%.2f").toString());
-		
+
 		var desSpeedView = View.findDrawableById("DesSpeedLabel");
         desSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
 		desSpeedView.setText(me.desired_speed.format("%.2f").toString());
-		
+
+		var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
+		splitSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
+		splitSpeedView.setText(me.split_speed.format("%.2f").toString());
+
 		var lapTimeView = View.findDrawableById("LapTimeLabel");
 		lapTimeView.setColor(Application.getApp().getProperty("ForegroundColor"));
 		lapTimeView.setText(secondsToTimeString(me.split_counter));
