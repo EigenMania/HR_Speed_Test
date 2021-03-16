@@ -1,0 +1,7 @@
+<layout id="MainLayout">
+    <label id="DesSpeedLabel" x="30%" y="50%" font="Graphics.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="CurSpeedLabel" x="30%" y="70%" font="Graphics.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+    <label id="SplitSpeedLabel" x="70%" y="50%" font="Graphics.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="LapTimeLabel" x="70%" y="70%" font="Graphics.FONT_MEDIUM" justification="Graphics.TEXT_JUSTIFY_CENTER" />    
+</layout>

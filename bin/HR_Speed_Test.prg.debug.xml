@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="/home/adrian/eclipse-workspace/HR_Speed_Test/manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="3" lineNum="6" pc="268435456" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="3" lineNum="7" pc="268435460" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="4" lineNum="11" pc="268435479" symbol="onStart"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="5" lineNum="15" pc="268435484" symbol="onStop"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="6" lineNum="19" pc="268435489" symbol="getInitialView"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="6" lineNum="20" pc="268435493" symbol="getInitialView"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestApp.mc" id="6" lineNum="21" pc="268435516" symbol="getInitialView"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="8" lineNum="19" pc="268435584" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="8" lineNum="20" pc="268435588" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="8" lineNum="21" pc="268435609" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="9" lineNum="25" pc="268435628" symbol="onLayout"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="9" lineNum="26" pc="268435632" symbol="onLayout"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="9" lineNum="27" pc="268435660" symbol="onLayout"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="9" lineNum="28" pc="268435695" symbol="onLayout"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="10" lineNum="34" pc="268435733" symbol="onShow"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="10" lineNum="35" pc="268435737" symbol="onShow"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="11" lineNum="38" pc="268435759" symbol="timerCallback"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="11" lineNum="39" pc="268435763" symbol="timerCallback"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="11" lineNum="41" pc="268435782" symbol="timerCallback"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="11" lineNum="42" pc="268435799" symbol="timerCallback"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="11" lineNum="45" pc="268435814" symbol="timerCallback"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="12" lineNum="48" pc="268435831" symbol="levelUp"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="12" lineNum="49" pc="268435835" symbol="levelUp"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="12" lineNum="50" pc="268435851" symbol="levelUp"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="13" lineNum="54" pc="268435874" symbol="secondsToTimeString"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="13" lineNum="55" pc="268435878" symbol="secondsToTimeString"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="13" lineNum="56" pc="268435897" symbol="secondsToTimeString"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="13" lineNum="57" pc="268435919" symbol="secondsToTimeString"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="13" lineNum="58" pc="268435995" symbol="secondsToTimeString"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="62" pc="268435999" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="63" pc="268436003" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="65" pc="268436024" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="66" pc="268436049" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="69" pc="268436071" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="70" pc="268436095" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="71" pc="268436136" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="73" pc="268436179" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="74" pc="268436203" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="75" pc="268436244" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="77" pc="268436287" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="78" pc="268436311" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="79" pc="268436352" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="14" lineNum="82" pc="268436383" symbol="onUpdate"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="15" lineNum="88" pc="268436404" symbol="onHide"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="15" lineNum="11" pc="268437373" symbol="&lt;init&gt;"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestView.mc" id="15" lineNum="16" pc="268437389" symbol="&lt;init&gt;"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestDelegate.mc" id="17" lineNum="5" pc="268436409" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestDelegate.mc" id="17" lineNum="6" pc="268436413" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestDelegate.mc" id="18" lineNum="9" pc="268436432" symbol="onMenu"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestDelegate.mc" id="18" lineNum="10" pc="268436436" symbol="onMenu"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestDelegate.mc" id="18" lineNum="11" pc="268436520" symbol="onMenu"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="20" lineNum="6" pc="268436524" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="20" lineNum="7" pc="268436528" symbol="initialize"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="21" lineNum="10" pc="268436547" symbol="onMenuItem"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="21" lineNum="11" pc="268436551" symbol="onMenuItem"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="21" lineNum="12" pc="268436562" symbol="onMenuItem"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="21" lineNum="13" pc="268436586" symbol="onMenuItem"/>
+        <entry filename="/home/adrian/eclipse-workspace/HR_Speed_Test/source/HR_Speed_TestMenuDelegate.mc" id="21" lineNum="14" pc="268436597" symbol="onMenuItem"/>
+        <entry filename="Rez" id="27" lineNum="15" pc="268436622" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="17" pc="268436634" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="18" pc="268436647" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="20" pc="268436660" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="21" pc="268436779" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="22" pc="268436898" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="23" pc="268437017" symbol="MainLayout"/>
+        <entry filename="Rez" id="27" lineNum="25" pc="268437136" symbol="MainLayout"/>
+        <entry filename="Rez" id="30" lineNum="38" pc="268437184" symbol="initialize"/>
+        <entry filename="Rez" id="30" lineNum="39" pc="268437188" symbol="initialize"/>
+        <entry filename="Rez" id="30" lineNum="40" pc="268437206" symbol="initialize"/>
+        <entry filename="Rez" id="30" lineNum="41" pc="268437262" symbol="initialize"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="11" object="true" symbol="HR_Speed_TestDelegate"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="4" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="26" method="true" symbol="MainLayout"/>
+        <entry field="true" id="34" symbol="ColorRed"/>
+        <entry field="true" id="16" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;speed_increment&gt;"/>
+        <entry field="true" id="31" symbol="MilitaryFormatTitle"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="28" symbol="ColorBlue"/>
+        <entry field="true" id="33" symbol="AppName"/>
+        <entry id="8" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8389080" method="true" symbol="onMenu"/>
+        <entry id="8388772" module="true" object="true" symbol="Fonts"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="9" object="true" symbol="HR_Speed_TestApp"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="39" symbol="prompt"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry id="41" symbol="item_2"/>
+        <entry id="40" symbol="item_1"/>
+        <entry field="true" id="17" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;desired_speed&gt;"/>
+        <entry id="23" module="true" symbol="Menus"/>
+        <entry field="true" id="30" symbol="ColorDarkGray"/>
+        <entry id="6" module="true" symbol="globals/Rez/Layouts"/>
+        <entry field="true" id="14" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;split_counter&gt;"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry id="21" method="true" symbol="secondsToTimeString"/>
+        <entry field="true" id="38" symbol="ColorWhite"/>
+        <entry id="7" module="true" symbol="globals/Rez/JsonData"/>
+        <entry field="true" id="32" symbol="ColorBlack"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="25" object="true" symbol="MainMenu"/>
+        <entry id="10" object="true" symbol="HR_Speed_TestView"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="19" method="true" symbol="timerCallback"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="8390088" module="true" object="true" symbol="JsonData"/>
+        <entry field="true" id="24" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry field="true" id="15" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;start_speed&gt;"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry field="true" id="29" symbol="BackgroundColorTitle"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry field="true" id="18" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;current_speed&gt;"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="27" symbol="ColorLightGray"/>
+        <entry id="12" object="true" symbol="HR_Speed_TestMenuDelegate"/>
+        <entry field="true" id="13" symbol="&lt;globals/HR_Speed_TestView/&lt;&gt;split_time&gt;"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="8389109" method="true" symbol="onMenuItem"/>
+        <entry field="true" id="35" symbol="ForegroundColorTitle"/>
+        <entry id="8388646" module="true" object="true" symbol="Timer"/>
+        <entry id="22" module="true" symbol="Layouts"/>
+        <entry id="20" method="true" symbol="levelUp"/>
+        <entry id="5" module="true" symbol="globals/Rez/Fonts"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="37" symbol="menu_label_2"/>
+        <entry field="true" id="36" symbol="menu_label_1"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435484" name="state" stackId="1" startPc="268435479"/>
+        <entry arg="true" endPc="268435489" name="state" stackId="1" startPc="268435484"/>
+        <entry endPc="268435732" name="myTimer" stackId="2" startPc="268435632"/>
+        <entry arg="true" endPc="268435733" name="dc" stackId="1" startPc="268435628"/>
+        <entry endPc="268435998" name="minutes" stackId="2" startPc="268435878"/>
+        <entry endPc="268435998" name="timeString" stackId="4" startPc="268435878"/>
+        <entry endPc="268435998" name="seconds" stackId="3" startPc="268435878"/>
+        <entry arg="true" endPc="268435999" name="totalSeconds" stackId="1" startPc="268435874"/>
+        <entry endPc="268436403" name="lapTimeView" stackId="5" startPc="268436003"/>
+        <entry endPc="268436403" name="curSpeedView" stackId="3" startPc="268436003"/>
+        <entry endPc="268436403" name="current_activity_info" stackId="2" startPc="268436003"/>
+        <entry endPc="268436403" name="desSpeedView" stackId="4" startPc="268436003"/>
+        <entry arg="true" endPc="268436404" name="dc" stackId="1" startPc="268435999"/>
+        <entry arg="true" endPc="268436622" name="item" stackId="1" startPc="268436547"/>
+        <entry endPc="268437183" name="rez_cmp_local_text_DesSpeedLabel" stackId="4" startPc="268436634"/>
+        <entry endPc="268437183" name="rez_cmp_local_text_CurSpeedLabel" stackId="5" startPc="268436634"/>
+        <entry endPc="268437183" name="rez_cmp_local_var_dc_getWidth" stackId="3" startPc="268436634"/>
+        <entry endPc="268437183" name="rez_cmp_local_var_dc_getHeight" stackId="2" startPc="268436634"/>
+        <entry endPc="268437183" name="rez_cmp_local_text_SplitSpeedLabel" stackId="6" startPc="268436634"/>
+        <entry endPc="268437183" name="rez_cmp_local_text_LapTimeLabel" stackId="7" startPc="268436634"/>
+        <entry arg="true" endPc="268437184" name="dc" stackId="1" startPc="268436622"/>
+    </localVars>
+    <annotations/>
+    <dataEntryOffsetMappings>
+        <dataEntry offset="87" parentId="" symbolId="globals" type="module"/>
+        <dataEntry offset="166" parentId="globals" symbolId="HR_Speed_TestMenuDelegate" type="class"/>
+        <dataEntry offset="221" parentId="globals" symbolId="HR_Speed_TestView" type="class"/>
+        <dataEntry offset="372" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry offset="451" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry offset="490" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry offset="529" parentId="Menus" symbolId="MainMenu" type="class"/>
+        <dataEntry offset="576" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry offset="607" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry offset="646" parentId="Rez" symbolId="JsonData" type="module"/>
+        <dataEntry offset="677" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry offset="812" parentId="globals" symbolId="HR_Speed_TestDelegate" type="class"/>
+        <dataEntry offset="867" parentId="globals" symbolId="HR_Speed_TestApp" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" name="initialize" parent="HR_Speed_TestApp">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStart" parent="HR_Speed_TestApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onStop" parent="HR_Speed_TestApp">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="getInitialView" parent="HR_Speed_TestApp">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="HR_Speed_TestView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onLayout" parent="HR_Speed_TestView">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onShow" parent="HR_Speed_TestView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="timerCallback" parent="HR_Speed_TestView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="levelUp" parent="HR_Speed_TestView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="secondsToTimeString" parent="HR_Speed_TestView">
+            <param id="totalSeconds"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onUpdate" parent="HR_Speed_TestView">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onHide" parent="HR_Speed_TestView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="HR_Speed_TestDelegate">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onMenu" parent="HR_Speed_TestDelegate">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="HR_Speed_TestMenuDelegate">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onMenuItem" parent="HR_Speed_TestMenuDelegate">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="MainLayout" parent="Layouts">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="MainMenu">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
