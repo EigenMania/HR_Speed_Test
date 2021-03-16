@@ -5,32 +5,41 @@ using Toybox.Lang;
 using Toybox.Application;
 using Toybox.Activity;
 using Toybox.Timer;
+using Toybox.ActivityRecording;
 
 class HR_Speed_TestView extends WatchUi.View {
     private var current_activity_info;
-    
+
     private var split_time = 1 * 30;
     private var split_counter = split_time;
     
     private var start_speed = 8.0;
     private var speed_increment = 1.0;
 
-	private var desired_speed = start_speed;
-	private var current_speed = 0.0;
-	
-	private var split_speed = 0.0;
-	private var n_split = 0;
-	
+    private var desired_speed = start_speed;
+    private var current_speed = 0.0;
+
+    private var split_speed = 0.0;
+    private var n_split = 0;
+
+    private var session;
+    var session_active = false;
+
     function initialize() {
-    	System.println("initialize()...");
+        System.println("initialize()...");
         me.current_activity_info = Toybox.Activity.getActivityInfo();
         View.initialize();
     }
 
+    // use the select Start/Stop or touch for recording
+    function onSelect() {
+       System.println("onSelect()...");
+    }
+
     // Load your resources here
     function onLayout(dc) {
-    	var myTimer = new Timer.Timer();
-	    myTimer.start(method(:timerCallback), 1000, true);
+        var myTimer = new Timer.Timer();
+        myTimer.start(method(:timerCallback), 1000, true);
         setLayout(Rez.Layouts.MainLayout(dc));
     }
 
@@ -38,23 +47,25 @@ class HR_Speed_TestView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-    	System.println("onShow()...");
+        System.println("onShow()...");
     }
 
-	function timerCallback() {
-	    // Update activity info
+    function timerCallback() {
+        // Update activity info
         loadNewActivityInfo();
-        
-		me.split_counter -= 1;
-		
-		updateSplitSpeed();
-		
-		if (me.split_counter < 0) {
-            levelUp();
-		}
-		
-		WatchUi.requestUpdate();		
-	}
+
+        if (me.session_active == true) {
+            me.split_counter -= 1;
+
+            updateSplitSpeed();
+
+            if (me.split_counter < 0) {
+                levelUp();
+            }
+        }
+
+        WatchUi.requestUpdate();		
+    }
 
     function loadNewActivityInfo() {
         me.current_activity_info = Toybox.Activity.getActivityInfo();
@@ -87,27 +98,27 @@ class HR_Speed_TestView extends WatchUi.View {
     
     // Update the view
     function onUpdate(dc) {
-    	System.println("onUpdate...");
+        System.println("onUpdate...");
 
-		me.current_speed = me.current_activity_info.currentSpeed * 3.6;
-    	    	
+        me.current_speed = me.current_activity_info.currentSpeed * 3.6;
+
         // Update the view
         var curSpeedView = View.findDrawableById("CurSpeedLabel");
         curSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
         curSpeedView.setText(me.current_speed.format("%.2f").toString());
 
-		var desSpeedView = View.findDrawableById("DesSpeedLabel");
+        var desSpeedView = View.findDrawableById("DesSpeedLabel");
         desSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
-		desSpeedView.setText(me.desired_speed.format("%.2f").toString());
+        desSpeedView.setText(me.desired_speed.format("%.2f").toString());
 
-		var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
-		splitSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
-		splitSpeedView.setText(me.split_speed.format("%.2f").toString());
+        var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
+        splitSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
+        splitSpeedView.setText(me.split_speed.format("%.2f").toString());
 
-		var lapTimeView = View.findDrawableById("LapTimeLabel");
-		lapTimeView.setColor(Application.getApp().getProperty("ForegroundColor"));
-		lapTimeView.setText(secondsToTimeString(me.split_counter));
-		
+        var lapTimeView = View.findDrawableById("LapTimeLabel");
+        lapTimeView.setColor(Application.getApp().getProperty("ForegroundColor"));
+        lapTimeView.setText(secondsToTimeString(me.split_counter));
+
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
