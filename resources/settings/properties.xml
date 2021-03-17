@@ -1,8 +1,7 @@
 <properties>
     <property id="ForegroundColor" type="number">0x000000</property>
-    <property id="BackgroundColor" type="number">0xAAAAAA</property>
+    <property id="BackgroundColor" type="number">0xFFFFFF</property>
     <property id="BandLow" type="number">0xFF0000</property>
     <property id="BandMed" type="number">0xFF5500</property>
     <property id="BandHigh" type="number">0x00FF00</property>
-    
 </properties>

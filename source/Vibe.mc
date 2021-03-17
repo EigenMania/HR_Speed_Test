@@ -1,7 +1,15 @@
 using Toybox.Attention;
 
 class Vibe {
-    static function activityStart() {}
+    static function activityStart() {
+        var vibeProfile = [
+            new Attention.VibeProfile(100, 250),
+            new Attention.VibeProfile(0,   100),
+            new Attention.VibeProfile(100, 250)
+        ];
+    Attention.playTone(Attention.TONE_START);
+    Attention.vibrate(vibeProfile);
+    }
 
     static function tooSlowWarning() {
         var vibeProfile = [ new Attention.VibeProfile(25, 500) ];

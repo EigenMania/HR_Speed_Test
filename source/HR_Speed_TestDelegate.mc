@@ -2,37 +2,45 @@ using Toybox.WatchUi;
 using Toybox.System;
 
 class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
-    var HR_Speed_Test_View;
     var session;
+    var session_active;
 
-    function initialize(HR_Speed_Test_View_) {
+    function initialize() {
         System.println("initialize() BehaviourDelegate...");
-        me.HR_Speed_Test_View = HR_Speed_Test_View_;
         BehaviorDelegate.initialize();
     }
 
     function onSelect() {
         System.println("onSelect()...");
 
-        if (Toybox has :ActivityRecording) {                          // check device for activity recording
+        if (Toybox has :ActivityRecording) {
             if ((me.session == null) || (me.session.isRecording() == false)) {
-                me.session = ActivityRecording.createSession({          // set up recording session
-                     :name=>"HR_Speed_Test",                              // set session name
-                     :sport=>ActivityRecording.SPORT_RUNNING,       // set sport type
-                     :subSport=>ActivityRecording.SUB_SPORT_STREET // set sub sport type
+                me.session = ActivityRecording.createSession({
+                     :name=>"HR_Speed_Test",
+                     :sport=>ActivityRecording.SPORT_RUNNING,
+                     :subSport=>ActivityRecording.SUB_SPORT_GENERIC
                 });
-                me.session.start();  // call start session
-                me.HR_Speed_Test_View.session_active = true;
+                me.session.start();
+                me.session_active = true;
             }
             // TODO: Do not allow user to stop activity
-            else if ((session != null) && me.session.isRecording()) {
-                me.session.stop();                                      // stop the session
-                me.session.save();                                      // save the session
-                me.session = null;                                      // set session control variable to null
-                me.HR_Speed_Test_View.session_active = false;
+            else if ((me.session != null) && me.session.isRecording()) {
+                me.session.stop();
+                me.session.save();
+                me.session = null;
+                me.session_active = false;
             }
         }
-        return true;                                                 // return true for onSelect function
+        return true;
+    }
+
+    function onFail() {
+        if ((me.session != null) && me.session.isRecording()) {
+            me.session.stop();
+            me.session.save();
+            me.session = null;
+            me.session_active = false;
+        }
     }
 
     function onMenu() {
