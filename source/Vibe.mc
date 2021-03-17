@@ -12,7 +12,7 @@ class Vibe {
     }
 
     static function tooSlowWarning() {
-        var vibeProfile = [ new Attention.VibeProfile(25, 500) ];
+        var vibeProfile = [ new Attention.VibeProfile(50, 500) ];
         Attention.playTone(Attention.TONE_LOUD_BEEP);
         Attention.vibrate(vibeProfile);
     }

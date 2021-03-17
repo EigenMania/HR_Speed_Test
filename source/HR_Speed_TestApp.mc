@@ -12,11 +12,11 @@ class HR_Speed_TestApp extends Application.AppBase {
 
     var current_activity_info;
 
-    var split_time = 1 * 5;
+    var split_time = 1 * 10;
     var split_counter = split_time;
 
     var start_speed = 8.0;
-    var speed_increment = 1.0;
+    var speed_increment = 0.5;
     var fail_speed_delta = 0.25;
 
     var desired_speed = start_speed;
@@ -25,8 +25,12 @@ class HR_Speed_TestApp extends Application.AppBase {
     var split_speed = 0.0;
     var n_split = 0;
 
+    var last_elapsed_distance = 0.0;
+    var current_elapsed_distance = 0.0;
+
     var session;
     var session_active = false;
+    var session_active_prev = false;
 
     function initialize() {
         AppBase.initialize();
@@ -47,12 +51,23 @@ class HR_Speed_TestApp extends Application.AppBase {
 
     function timerCallback() {
         // Update activity info
-        loadNewActivityInfo();
+        loadCurrentActivityInfo();
+
+        // Hack to restart timer the moment activity recording is started
+        // to get non-zero elapsed distance for first iteration.
+        if (me.session_active_prev == false && me.HR_Speed_Test_Delegate.session_active == true) {
+            me.timer.stop();
+            me.session_active_prev = true;
+            me.timer.start(method(:timerCallback), 1000, true);
+        }
 
         if (me.HR_Speed_Test_Delegate.session_active == true) {
             me.split_counter -= 1;
-
             updateSplitSpeed();
+
+            if (me.split_speed < (me.desired_speed - me.fail_speed_delta)) {
+                Vibe.tooSlowWarning();
+            }
 
             if (me.split_counter < 0) {
                 levelUp();
@@ -71,24 +86,26 @@ class HR_Speed_TestApp extends Application.AppBase {
     }
 
     function updateSplitSpeed() {
-        if (me.n_split == 0) {
-            me.split_speed = me.current_speed;
-        } else {
-            me.split_speed = (me.split_speed * me.n_split + me.current_speed) / (me.n_split + 1);
-        }
         me.n_split += 1;
-
-        if (me.split_speed < (me.desired_speed - me.fail_speed_delta)) {
-            Vibe.tooSlowWarning();
-        }
+        //System.println(me.current_elapsed_distance);
+        //System.println(me.last_elapsed_distance);
+        //System.println(me.n_split);
+        me.split_speed = (me.current_elapsed_distance - me.last_elapsed_distance) / me.n_split;
+        //System.println(me.split_speed);
     }
 
-    function loadNewActivityInfo() {
+    function loadCurrentActivityInfo() {
         me.current_activity_info = Toybox.Activity.getActivityInfo();
-        if (me.current_activity_info == null || me.current_activity_info.currentSpeed == null) {
+        if (me.current_activity_info == null) {
             me.current_speed = 0.0;
+            me.current_elapsed_distance = 0.0;
         } else {
-            me.current_speed = me.current_activity_info.currentSpeed * 3.6;
+            if (me.current_activity_info.currentSpeed != null) {
+                me.current_speed = me.current_activity_info.currentSpeed;
+            }
+            if (me.current_activity_info.elapsedDistance != null) {
+                me.current_elapsed_distance = me.current_activity_info.elapsedDistance;
+            }
         }
     }
 
@@ -103,6 +120,7 @@ class HR_Speed_TestApp extends Application.AppBase {
             me.split_counter = me.split_time;
             me.n_split = 0;
             me.desired_speed += me.speed_increment;
+            me.last_elapsed_distance = me.current_elapsed_distance;
             Vibe.levelUp();
         }
     }

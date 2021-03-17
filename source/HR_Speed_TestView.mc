@@ -127,7 +127,7 @@ class HR_Speed_TestView extends WatchUi.View {
         View.onUpdate(dc);
 
         // All dc drawing must be done after onUpdate, since it clears the screen.
-        dc.setPenWidth(20);
+        dc.setPenWidth(30);
         dc.setColor(low_color, bg_color);
         dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 180, 90);
         dc.setColor(med_color, bg_color);
@@ -136,7 +136,7 @@ class HR_Speed_TestView extends WatchUi.View {
         dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 60, 0);
 
         var arrow_angle = getArrowAngle(me.desired_speed, me.split_speed, me.fail_speed_delta);
-        var r_tip = rc - 15;
+        var r_tip = rc - 20;
         var arrow_points = getArrowPoints(xc, yc, r_tip, arrow_angle);
 
         dc.setColor(fg_color, bg_color);
