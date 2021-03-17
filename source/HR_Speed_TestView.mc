@@ -11,7 +11,7 @@ using Toybox.Math;
 class HR_Speed_TestView extends WatchUi.View {
     private var current_activity_info;
 
-    private var split_time = 1 * 30;
+    private var split_time = 1 * 5;
     private var split_counter = split_time;
 
     private var start_speed = 8.0;
@@ -87,12 +87,14 @@ class HR_Speed_TestView extends WatchUi.View {
         me.split_counter = me.split_time;
         me.n_split = 0;
         me.desired_speed += me.speed_increment;
+        //Vibe.levelUp();
+        Vibe.levelFailed();
     }
 
     // Convert a number in seconds to MM:SS format string.
     function secondsToTimeString(totalSeconds) {
-        var minutes = (totalSeconds/60).toNumber();
-        var seconds = (totalSeconds-60*minutes).toNumber();
+        var minutes = (totalSeconds / 60).toNumber();
+        var seconds = (totalSeconds - 60*minutes).toNumber();
         var timeString = Lang.format("$1$:$2$", [minutes.format("%02d"), seconds.format("%02d")]);
         return timeString;
     }
@@ -116,6 +118,10 @@ class HR_Speed_TestView extends WatchUi.View {
 
         // Map to angle
         var marker_angle = 180*(1 - v_normalized);
+
+        if (marker_angle > 90) {
+            //Vibe.tooSlowWarning();
+        }
 
         return marker_angle;
     }
@@ -159,8 +165,6 @@ class HR_Speed_TestView extends WatchUi.View {
         var low_color = Application.getApp().getProperty("BandLow");
         var med_color = Application.getApp().getProperty("BandMed");
         var high_color = Application.getApp().getProperty("BandHigh");
-
-        me.current_speed = me.current_activity_info.currentSpeed * 3.6;
 
         // Update the view
         var curSpeedView = View.findDrawableById("CurSpeedLabel");
