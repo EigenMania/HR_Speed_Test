@@ -19,11 +19,12 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
                 me.session = ActivityRecording.createSession({          // set up recording session
                      :name=>"HR_Speed_Test",                              // set session name
                      :sport=>ActivityRecording.SPORT_RUNNING,       // set sport type
-                     :subSport=>ActivityRecording.SUB_SPORT_TRACK // set sub sport type
+                     :subSport=>ActivityRecording.SUB_SPORT_STREET // set sub sport type
                 });
                 me.session.start();  // call start session
                 me.HR_Speed_Test_View.session_active = true;
             }
+            // TODO: Do not allow user to stop activity
             else if ((session != null) && me.session.isRecording()) {
                 me.session.stop();                                      // stop the session
                 me.session.save();                                      // save the session
@@ -35,7 +36,7 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new HR_Speed_TestMenuDelegate(), WatchUi.SLIDE_UP);
+        //WatchUi.pushView(new Rez.Menus.MainMenu(), new HR_Speed_TestMenuDelegate(), WatchUi.SLIDE_UP);
         return true;
     }
 

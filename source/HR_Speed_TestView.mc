@@ -31,11 +31,6 @@ class HR_Speed_TestView extends WatchUi.View {
         View.initialize();
     }
 
-    // use the select Start/Stop or touch for recording
-    function onSelect() {
-       System.println("onSelect()...");
-    }
-
     // Load your resources here
     function onLayout(dc) {
         var myTimer = new Timer.Timer();
@@ -69,7 +64,11 @@ class HR_Speed_TestView extends WatchUi.View {
 
     function loadNewActivityInfo() {
         me.current_activity_info = Toybox.Activity.getActivityInfo();
-        me.current_speed = me.current_activity_info.currentSpeed * 3.6;
+        if (me.current_activity_info == null || me.current_activity_info.currentSpeed == null) {
+            me.current_speed = 0.0;
+        } else {
+            me.current_speed = me.current_activity_info.currentSpeed * 3.6;
+        }
     }
 
     function updateSplitSpeed() {
@@ -100,6 +99,17 @@ class HR_Speed_TestView extends WatchUi.View {
     function onUpdate(dc) {
         System.println("onUpdate...");
 
+        var xc = dc.getWidth() / 2;
+        var yc = dc.getHeight() / 2;
+        var rc = dc.getWidth() / 2;
+
+        // TODO: Load once upon initialization and store as members
+        var fg_color = Application.getApp().getProperty("ForegroundColor");
+        var bg_color = Application.getApp().getProperty("BackgroundColor");
+        var low_color = Application.getApp().getProperty("BandLow");
+        var med_color = Application.getApp().getProperty("BandMed");
+        var high_color = Application.getApp().getProperty("BandHigh");
+
         me.current_speed = me.current_activity_info.currentSpeed * 3.6;
 
         // Update the view
@@ -121,6 +131,15 @@ class HR_Speed_TestView extends WatchUi.View {
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+
+        // All dc drawing must be done after onUpdate, since it clears the screen.
+        dc.setPenWidth(20);
+        dc.setColor(low_color, bg_color);
+        dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 180, 90);
+        dc.setColor(med_color, bg_color);
+        dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 90, 60);
+        dc.setColor(high_color, bg_color);
+        dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 60, 0);
     }
 
     // Called when this View is removed from the screen. Save the
