@@ -5,8 +5,11 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
     var session;
     var session_active = false;
 
-    function initialize() {
+    var HR_Speed_Test_MenuDelegate;
+
+    function initialize(watchSettings) {
         System.println("initialize() BehaviourDelegate...");
+        me.HR_Speed_Test_MenuDelegate = new HR_Speed_TestMenuDelegate(watchSettings);
         BehaviorDelegate.initialize();
     }
 
@@ -44,8 +47,15 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        System.println("onMenu()...");
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new HR_Speed_TestMenuDelegate(), WatchUi.SLIDE_UP);
+        // Don't let the user access the menu while activity is in progress.
+        if (me.session_active == false) {
+            WatchUi.pushView(new Rez.Menus.MainMenu(), me.HR_Speed_Test_MenuDelegate, WatchUi.SLIDE_UP);
+        }
+    }
+
+    // TODO: Catch app exit
+    function onBack() {
+        System.println("onBack()...");
     }
 
 }

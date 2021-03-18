@@ -3,8 +3,9 @@
 
     <string id="prompt">Click the menu button</string>
 
-    <string id="menu_label_1">Starting Speed</string>
-    <string id="menu_label_2">Item 2</string>
+    <string id="menu_label_0">Starting Speed</string>
+    <string id="menu_label_1">Speed Increment</string>
+    <string id="menu_label_2">Level Duration</string>
 
     <string id="initialSpeedTitle">Initial Speed (kph)</string>
     <string id="initialSpeedPrompt">This value is the speed you will start running at. Choose something easy!</string>

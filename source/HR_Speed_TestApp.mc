@@ -8,7 +8,12 @@ class HR_Speed_TestApp extends Application.AppBase {
     var HR_Speed_Test_View;
     var HR_Speed_Test_Delegate;
 
-    var timer;
+    var initialSpeedWatchSetting = new SettingsNumberPickerDelegate();
+    var deltaSpeedWatchSetting = new SettingsNumberPickerDelegate();
+    var levelDurationWatchSetting = new SettingsNumberPickerDelegate();
+    var watchSettings = [initialSpeedWatchSetting, deltaSpeedWatchSetting, levelDurationWatchSetting];
+
+    var timer = new Timer.Timer();
 
     var current_activity_info;
 
@@ -38,14 +43,7 @@ class HR_Speed_TestApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state) {
-        // Set color properties
-        HR_Speed_TestApp.setProperty("ForegroundColor", Graphics.COLOR_WHITE);
-        HR_Speed_TestApp.setProperty("BackgroundColor", Graphics.COLOR_BLACK);
-        HR_Speed_TestApp.setProperty("BandLow", Graphics.COLOR_RED);
-        HR_Speed_TestApp.setProperty("BandMed", Graphics.COLOR_ORANGE);
-        HR_Speed_TestApp.setProperty("BandHigh", Graphics.COLOR_GREEN);
-
-        me.timer = new Timer.Timer();
+        updateFromProperties();
         me.timer.start(method(:timerCallback), 1000, true);
     }
 
@@ -87,11 +85,7 @@ class HR_Speed_TestApp extends Application.AppBase {
 
     function updateSplitSpeed() {
         me.n_split += 1;
-        //System.println(me.current_elapsed_distance);
-        //System.println(me.last_elapsed_distance);
-        //System.println(me.n_split);
         me.split_speed = (me.current_elapsed_distance - me.last_elapsed_distance) / me.n_split;
-        //System.println(me.split_speed);
     }
 
     function loadCurrentActivityInfo() {
@@ -125,6 +119,31 @@ class HR_Speed_TestApp extends Application.AppBase {
         }
     }
 
+    // Helper function to load current properties.
+    function updateFromProperties() {
+        me.start_speed = HR_Speed_TestApp.getProperty("initialSpeedKph");
+        me.desired_speed = me.start_speed;
+        me.speed_increment = HR_Speed_TestApp.getProperty("deltaSpeedKph");
+        me.split_time = HR_Speed_TestApp.getProperty("levelDurationS");
+        me.split_counter = me.split_time;
+    }
+
+    // Callback for when settings are changed in
+    // watch through the menu.
+    function loadNewWatchSettings() {
+        if (initialSpeedWatchSetting.myValue != null) {
+            me.start_speed = initialSpeedWatchSetting.myValue;
+            me.desired_speed = initialSpeedWatchSetting.myValue;
+        }
+        if (deltaSpeedWatchSetting.myValue != null) {
+            me.speed_increment = deltaSpeedWatchSetting.myValue;
+        }
+        if (levelDurationWatchSetting.myValue != null) {
+            me.split_time = levelDurationWatchSetting.myValue.value();
+            me.split_counter = levelDurationWatchSetting.myValue.value();
+        }
+    }
+
     // onStop() is called when your application is exiting
     function onStop(state) {
     }
@@ -133,14 +152,7 @@ class HR_Speed_TestApp extends Application.AppBase {
         System.println("onSettingsChanged()...");
         // Only allow updates when testing is not in progress.
         if (me.HR_Speed_Test_Delegate.session_active == false) {
-            me.start_speed = HR_Speed_TestApp.getProperty("initialSpeedKph");
-            me.desired_speed = me.start_speed;
-            me.speed_increment = HR_Speed_TestApp.getProperty("deltaSpeedKph");
-            me.split_time = HR_Speed_TestApp.getProperty("levelDurationS");
-            me.split_counter = me.split_time;
-            System.println(me.start_speed);
-            System.println(me.speed_increment);
-            System.println(me.split_time);
+            updateFromProperties();
         }
     }
 
@@ -151,7 +163,7 @@ class HR_Speed_TestApp extends Application.AppBase {
         me.HR_Speed_Test_View = new HR_Speed_TestView();
         updateViewData();
 
-        me.HR_Speed_Test_Delegate = new HR_Speed_TestDelegate();
+        me.HR_Speed_Test_Delegate = new HR_Speed_TestDelegate(me.watchSettings);
 
         return [ me.HR_Speed_Test_View, me.HR_Speed_Test_Delegate ];
     }
