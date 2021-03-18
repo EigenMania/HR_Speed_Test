@@ -39,6 +39,8 @@ class Vibe {
             new Attention.ToneProfile( 494, 300),
             new Attention.ToneProfile( 523, 300)
         ];
+        var vibeProfile = [ new Attention.VibeProfile(100, 1000) ];
+        Attention.vibrate(vibeProfile);
         Attention.playTone({:toneProfile=>toneProfile}); 
     }
 }

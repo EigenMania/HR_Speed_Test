@@ -132,13 +132,16 @@ class HR_Speed_TestApp extends Application.AppBase {
     // watch through the menu.
     function loadNewWatchSettings() {
         if (initialSpeedWatchSetting.myValue != null) {
-            me.start_speed = initialSpeedWatchSetting.myValue;
-            me.desired_speed = initialSpeedWatchSetting.myValue;
+            // Value is actually a distance in meters, so divide by 1000.
+            me.start_speed = initialSpeedWatchSetting.myValue / 1000;
+            me.desired_speed = initialSpeedWatchSetting.myValue / 1000;
         }
         if (deltaSpeedWatchSetting.myValue != null) {
-            me.speed_increment = deltaSpeedWatchSetting.myValue;
+            // Value is actually a distance in meters, so divide by 1000.
+            me.speed_increment = deltaSpeedWatchSetting.myValue / 1000;
         }
         if (levelDurationWatchSetting.myValue != null) {
+            // Value is a Time.Duration object, so use .value()
             me.split_time = levelDurationWatchSetting.myValue.value();
             me.split_counter = levelDurationWatchSetting.myValue.value();
         }
