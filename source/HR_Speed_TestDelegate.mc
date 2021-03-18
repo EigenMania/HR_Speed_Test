@@ -3,7 +3,7 @@ using Toybox.System;
 
 class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
     var session;
-    var session_active;
+    var session_active = false;
 
     function initialize() {
         System.println("initialize() BehaviourDelegate...");
@@ -44,8 +44,8 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() {
-        //WatchUi.pushView(new Rez.Menus.MainMenu(), new HR_Speed_TestMenuDelegate(), WatchUi.SLIDE_UP);
-        return true;
+        System.println("onMenu()...");
+        WatchUi.pushView(new Rez.Menus.MainMenu(), new HR_Speed_TestMenuDelegate(), WatchUi.SLIDE_UP);
     }
 
 }

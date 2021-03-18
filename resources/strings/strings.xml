@@ -3,18 +3,18 @@
 
     <string id="prompt">Click the menu button</string>
 
-    <string id="menu_label_1">Item 1</string>
+    <string id="menu_label_1">Starting Speed</string>
     <string id="menu_label_2">Item 2</string>
 
-    <string id="BackgroundColorTitle">Background Color</string>
-    <string id="ForegroundColorTitle">Foreground Color</string>
-    <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
+    <string id="initialSpeedTitle">Initial Speed (kph)</string>
+    <string id="initialSpeedPrompt">This value is the speed you will start running at. Choose something easy!</string>
+    <string id="initialSpeedError">Initial speed must be greater than zero!</string>
 
-    <string id="ColorBlack">Black</string>
-    <string id="ColorDarkGray">Dark Gray</string>
-    <string id="ColorLightGray">Light Gray</string>
-    <string id="ColorWhite">White</string>
-    <string id="ColorBlue">Blue</string>
-    <string id="ColorRed">Red</string>
+    <string id="deltaSpeedTitle">Speed Increment (kph)</string>
+    <string id="deltaSpeedPrompt">How much the speed increases each level.</string>
+    <string id="deltaSpeedError">Speed increment must be greater than 0.1 kph!</string>
 
+    <string id="levelDurationTitle">Level Duration (s)</string>
+    <string id="levelDurationPrompt">How long each level lasts.</string>
+    <string id="levelDurationError">Level duration must be greater than zero!</string>
 </strings>

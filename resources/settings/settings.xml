@@ -1,3 +1,16 @@
 <settings>
+    <!-- Setting for the initial speed of the test (kph) -->
+    <setting propertyKey="@Properties.initialSpeedKph" title="@Strings.initialSpeedTitle" prompt="@Strings.initialSpeedPrompt">
+    <settingConfig type="numeric" min="0.0" errorMessage="@Strings.initialSpeedError" />
+    </setting>
 
+    <!-- Setting for the speed increments during the test (kph) -->
+    <setting propertyKey="@Properties.deltaSpeedKph" title="@Strings.deltaSpeedTitle" prompt="@Strings.deltaSpeedPrompt">
+    <settingConfig type="numeric" min="0.1" errorMessage="@Strings.deltaSpeedError" />
+    </setting>
+
+    <!-- Setting for the duration of each level (s) -->
+    <setting propertyKey="@Properties.levelDurationS" title="@Strings.levelDurationTitle" prompt="@Strings.levelDurationPrompt">
+    <settingConfig type="numeric" min="1" errorMessage="@Strings.levelDurationError" />
+    </setting>
 </settings>

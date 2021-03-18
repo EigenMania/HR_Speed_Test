@@ -129,6 +129,21 @@ class HR_Speed_TestApp extends Application.AppBase {
     function onStop(state) {
     }
 
+    function onSettingsChanged() {
+        System.println("onSettingsChanged()...");
+        // Only allow updates when testing is not in progress.
+        if (me.HR_Speed_Test_Delegate.session_active == false) {
+            me.start_speed = HR_Speed_TestApp.getProperty("initialSpeedKph");
+            me.desired_speed = me.start_speed;
+            me.speed_increment = HR_Speed_TestApp.getProperty("deltaSpeedKph");
+            me.split_time = HR_Speed_TestApp.getProperty("levelDurationS");
+            me.split_counter = me.split_time;
+            System.println(me.start_speed);
+            System.println(me.speed_increment);
+            System.println(me.split_time);
+        }
+    }
+
     // Return the initial view of your application here
     function getInitialView() {
         System.println("getInitialView()...");

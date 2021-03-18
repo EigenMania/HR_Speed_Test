@@ -8,11 +8,28 @@ using Toybox.ActivityRecording;
 using Toybox.Math;
 
 class HR_Speed_TestView extends WatchUi.View {
+    // Public Members
     var current_speed = 0.0;
     var desired_speed = 0.0;
     var fail_speed_delta = 0.0;
     var split_speed = 0.0;
     var split_counter = 0.0;
+
+    // Private Members
+    private var fg_color = Application.getApp().getProperty("ForegroundColor");
+    private var bg_color = Application.getApp().getProperty("BackgroundColor");
+    private var low_color = Application.getApp().getProperty("BandLow");
+    private var med_color = Application.getApp().getProperty("BandMed");
+    private var high_color = Application.getApp().getProperty("BandHigh");
+
+    private var curSpeedView = View.findDrawableById("CurSpeedLabel");
+    private var desSpeedView = View.findDrawableById("DesSpeedLabel");
+    private var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
+    private var lapTimeView = View.findDrawableById("LapTimeLabel");
+
+    private var xc;
+    private var yc;
+    private var rc;
 
     function initialize() {
         System.println("initialize()...");
@@ -21,7 +38,25 @@ class HR_Speed_TestView extends WatchUi.View {
 
     // Load your resources here
     function onLayout(dc) {
+        // Must set layout before loading drawables.
         setLayout(Rez.Layouts.MainLayout(dc));
+
+        // Some screen size parameters.
+        me.xc = dc.getWidth() / 2;
+        me.yc = dc.getHeight() / 2;
+        me.rc = dc.getWidth() / 2;
+
+        // Load drawables.
+        me.curSpeedView = View.findDrawableById("CurSpeedLabel");
+        me.desSpeedView = View.findDrawableById("DesSpeedLabel");
+        me.splitSpeedView = View.findDrawableById("SplitSpeedLabel");
+        me.lapTimeView = View.findDrawableById("LapTimeLabel");
+
+        // Set drawable colors.
+        me.curSpeedView.setColor(me.fg_color);
+        me.desSpeedView.setColor(me.fg_color);
+        me.splitSpeedView.setColor(me.fg_color);
+        me.lapTimeView.setColor(me.fg_color);
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -32,7 +67,7 @@ class HR_Speed_TestView extends WatchUi.View {
     }
 
     // Convert a number in seconds to MM:SS format string.
-    function secondsToTimeString(totalSeconds) {
+    private function secondsToTimeString(totalSeconds) {
         var minutes = (totalSeconds / 60).toNumber();
         var seconds = (totalSeconds - 60*minutes).toNumber();
         var timeString = Lang.format("$1$:$2$", [minutes.format("%02d"), seconds.format("%02d")]);
@@ -40,7 +75,7 @@ class HR_Speed_TestView extends WatchUi.View {
     }
 
     // Obtain angle of band marker
-    function getArrowAngle(v_des, v_split_cur, v_fail_delta) {
+    private function getArrowAngle(v_des, v_split_cur, v_fail_delta) {
         // v_low corresponds to 180°, v_high to 0°
         var v_low = v_des - 4 * v_fail_delta;
         var v_high = v_des + 2 * v_fail_delta;
@@ -56,17 +91,12 @@ class HR_Speed_TestView extends WatchUi.View {
             v_normalized = 1;
         }
 
-        // Map to angle
-        var marker_angle = 180*(1 - v_normalized);
-
-        if (marker_angle > 90) {
-            //Vibe.tooSlowWarning();
-        }
-
-        return marker_angle;
+        // Map to angle and return
+        return 180*(1 - v_normalized);
     }
 
-    function getArrowPoints(xc, yc, r_tip, angle_deg) {
+    // Vector of (x,y) points to draw arrow on screen.
+    private function getArrowPoints(xc, yc, r_tip, angle_deg) {
         var p = new [3];
 
         var angle_rad = Math.toRadians(angle_deg);
@@ -91,56 +121,38 @@ class HR_Speed_TestView extends WatchUi.View {
         return p;
     }
 
-    // Update the view
-    function onUpdate(dc) {
-        System.println("onUpdate...");
-
-        var xc = dc.getWidth() / 2;
-        var yc = dc.getHeight() / 2;
-        var rc = dc.getWidth() / 2;
-
-        // TODO: Load once upon initialization and store as members
-        var fg_color = Application.getApp().getProperty("ForegroundColor");
-        var bg_color = Application.getApp().getProperty("BackgroundColor");
-        var low_color = Application.getApp().getProperty("BandLow");
-        var med_color = Application.getApp().getProperty("BandMed");
-        var high_color = Application.getApp().getProperty("BandHigh");
-
-        // Update the view
-        var curSpeedView = View.findDrawableById("CurSpeedLabel");
-        curSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
-        curSpeedView.setText(me.current_speed.format("%.2f").toString());
-
-        var desSpeedView = View.findDrawableById("DesSpeedLabel");
-        desSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
-        desSpeedView.setText(me.desired_speed.format("%.2f").toString());
-
-        var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
-        splitSpeedView.setColor(Application.getApp().getProperty("ForegroundColor"));
-        splitSpeedView.setText(me.split_speed.format("%.2f").toString());
-
-        var lapTimeView = View.findDrawableById("LapTimeLabel");
-        lapTimeView.setColor(Application.getApp().getProperty("ForegroundColor"));
-        lapTimeView.setText(secondsToTimeString(me.split_counter));
-
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
-
-        // All dc drawing must be done after onUpdate, since it clears the screen.
+    private function drawBandAndArrow(dc, xc, yc, rc) {
         dc.setPenWidth(30);
-        dc.setColor(low_color, bg_color);
+        dc.setColor(me.low_color, me.bg_color);
         dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 180, 90);
-        dc.setColor(med_color, bg_color);
+        dc.setColor(me.med_color, me.bg_color);
         dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 90, 60);
-        dc.setColor(high_color, bg_color);
+        dc.setColor(me.high_color, me.bg_color);
         dc.drawArc(xc, yc, rc, Graphics.ARC_CLOCKWISE, 60, 0);
 
         var arrow_angle = getArrowAngle(me.desired_speed, me.split_speed, me.fail_speed_delta);
         var r_tip = rc - 20;
         var arrow_points = getArrowPoints(xc, yc, r_tip, arrow_angle);
 
-        dc.setColor(fg_color, bg_color);
+        dc.setColor(me.fg_color, me.bg_color);
         dc.fillPolygon(arrow_points);
+    }
+
+    // Update the view
+    function onUpdate(dc) {
+        System.println("onUpdate...");
+
+        // Update the view
+        me.curSpeedView.setText(me.current_speed.format("%.2f").toString());
+        me.desSpeedView.setText(me.desired_speed.format("%.2f").toString());
+        me.splitSpeedView.setText(me.split_speed.format("%.2f").toString());
+        me.lapTimeView.setText(secondsToTimeString(me.split_counter));
+
+        // Call the parent onUpdate function to redraw the layout
+        View.onUpdate(dc);
+
+        // All dc drawing must be done after onUpdate, since it clears the screen.
+        drawBandAndArrow(dc, me.xc, me.yc, me.rc);
     }
 
     // Called when this View is removed from the screen. Save the
