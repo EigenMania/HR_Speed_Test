@@ -1,8 +1,6 @@
 <strings>
     <string id="AppName">HR_Speed_Test</string>
 
-    <string id="prompt">Click the menu button</string>
-
     <string id="menu_label_0">Starting Speed</string>
     <string id="menu_label_1">Speed Increment</string>
     <string id="menu_label_2">Level Duration</string>

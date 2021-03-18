@@ -17,7 +17,7 @@ class HR_Speed_TestApp extends Application.AppBase {
 
     var current_activity_info;
 
-    var split_time = 1 * 10;
+    var split_time = 1 * 60;
     var split_counter = split_time;
 
     var start_speed = 8.0;

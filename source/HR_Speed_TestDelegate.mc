@@ -26,24 +26,21 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
                 me.session.start();
                 me.session_active = true;
             }
-            // TODO: Do not allow user to stop activity
-            else if ((me.session != null) && me.session.isRecording()) {
-                me.session.stop();
-                me.session.save();
-                me.session = null;
-                me.session_active = false;
-            }
         }
         return true;
     }
 
     function onFail() {
-        if ((me.session != null) && me.session.isRecording()) {
-            me.session.stop();
-            me.session.save();
-            me.session = null;
-            me.session_active = false;
-        }
+        var message = "Save Activity?";
+        var dialog = new WatchUi.Confirmation(message);
+        WatchUi.pushView(
+            dialog,
+            new MyConfirmationDelegate(),
+            WatchUi.SLIDE_IMMEDIATE);
+
+        // Immediately stop recording and end session.
+        me.session.stop();
+        me.session_active = false;
     }
 
     function onMenu() {

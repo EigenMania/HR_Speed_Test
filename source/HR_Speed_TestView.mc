@@ -70,7 +70,13 @@ class HR_Speed_TestView extends WatchUi.View {
     private function secondsToTimeString(totalSeconds) {
         var minutes = (totalSeconds / 60).toNumber();
         var seconds = (totalSeconds - 60*minutes).toNumber();
-        var timeString = Lang.format("$1$:$2$", [minutes.format("%02d"), seconds.format("%02d")]);
+        var timeString;
+
+        if (totalSeconds < 0) {
+            timeString = "--:--";
+        } else {
+            timeString = Lang.format("$1$:$2$", [minutes.format("%02d"), seconds.format("%02d")]);
+        }
         return timeString;
     }
 
