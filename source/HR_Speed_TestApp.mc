@@ -85,6 +85,14 @@ class HR_Speed_TestApp extends Application.AppBase {
                 Vibe.tooSlowWarning();
             }
 
+            // TODO: helper function for failed level. Don't repeat code!
+            // TODO: do not hard-code warning and failure conditions
+            if (me.split_speed < (me.desired_speed - 4 * me.fail_speed_delta)) {
+                // Automatically end activity and save.
+                Vibe.levelFailed();
+                me.HR_Speed_Test_Delegate.onFail();
+            }
+
             if (me.split_counter < 0) {
                 System.println("LEVEL UP!");
                 levelUp();
@@ -104,18 +112,9 @@ class HR_Speed_TestApp extends Application.AppBase {
     }
 
     function updateSplitSpeed() {
-        var delta_d = me.current_elapsed_distance - me.last_elapsed_distance; // in km
-        var delta_t = (me.current_elapsed_time - me.last_elapsed_time) * me.s2hr;
-
-        if (me.last_elapsed_distance == 0.0 && delta_t < 0.95*me.s2hr) {
-            // delta_d / delta_t can be unstable for the very first measurement
-            // since the elapsed time is less than one second so use the current_speed
-            // for the very first split speed measurement.
-            //me.split_speed = me.current_speed;
-            me.split_speed = delta_d / delta_t;
-        } else {
-            me.split_speed = delta_d / delta_t;
-        }
+        var delta_d = me.current_elapsed_distance - me.last_elapsed_distance; // in kilometers
+        var delta_t = (me.current_elapsed_time - me.last_elapsed_time) * me.s2hr; // in hours
+        me.split_speed = delta_d / delta_t;
         System.println(Lang.format("Cur   Speed: $1$", [me.current_speed.format("%.2f")]));
         System.println(Lang.format("Split Speed: $1$", [me.split_speed.format("%.2f")]));
     }
@@ -158,6 +157,8 @@ class HR_Speed_TestApp extends Application.AppBase {
     }
 
     function levelUp() {
+        me.HR_Speed_Test_Delegate.session.addLap();
+
         // Check if we failed to achieve minimum average split speed
         if (me.split_speed < (me.desired_speed - me.fail_speed_delta)) {
             // Automatically end activity and save.
