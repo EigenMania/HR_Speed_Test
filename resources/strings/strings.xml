@@ -1,10 +1,12 @@
 <strings>
     <string id="AppName">HR_Speed_Test</string>
 
+    <!-- Menu labels on watch -->
     <string id="menu_label_0">Starting Speed</string>
     <string id="menu_label_1">Speed Increment</string>
     <string id="menu_label_2">Level Duration</string>
 
+    <!-- Settings strings -->
     <string id="initialSpeedTitle">Initial Speed (kph)</string>
     <string id="initialSpeedPrompt">This value is the speed you will start running at. Choose something easy!</string>
     <string id="initialSpeedError">Initial speed must be greater than zero!</string>
@@ -16,4 +18,17 @@
     <string id="levelDurationTitle">Level Duration (s)</string>
     <string id="levelDurationPrompt">How long each level lasts.</string>
     <string id="levelDurationError">Level duration must be greater than zero!</string>
+
+    <string id="desiredSpeedGraphLabel">Desired Speed</string>
+    <string id="desiredSpeedDataLabel">Speed</string>
+    <string id="desiredSpeedUnits">kph</string>
+
+    <string id="currentSpeedGraphLabel">Current Speed</string>
+    <string id="currentSpeedDataLabel">Speed</string>
+    <string id="currentSpeedUnits">kph</string>
+
+    <string id="splitSpeedGraphLabel">Split Speed</string>
+    <string id="splitSpeedDataLabel">Speed</string>
+    <string id="splitSpeedUnits">kph</string>
+
 </strings>
