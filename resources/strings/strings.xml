@@ -31,4 +31,11 @@
     <string id="splitSpeedDataLabel">Speed</string>
     <string id="splitSpeedUnits">kph</string>
 
+    <string id="deltaDGraphLabel">Delta D</string>
+    <string id="deltaDDataLabel">Distance</string>
+    <string id="deltaDUnits">km</string>
+
+    <string id="deltaTGraphLabel">Delta T</string>
+    <string id="deltaTDataLabel">Time</string>
+    <string id="deltaTUnits">h</string>
 </strings>

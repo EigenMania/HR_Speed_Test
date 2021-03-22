@@ -16,28 +16,30 @@ class HR_Speed_TestView extends WatchUi.View {
     var split_counter = 0.0;
 
     // Private Members
-    private var fg_color = Application.getApp().getProperty("ForegroundColor");
-    private var bg_color = Application.getApp().getProperty("BackgroundColor");
-    private var low_color = Application.getApp().getProperty("BandLow");
-    private var med_color = Application.getApp().getProperty("BandMed");
-    private var high_color = Application.getApp().getProperty("BandHigh");
+    private var fg_color;
+    private var bg_color;
+    private var low_color;
+    private var med_color;
+    private var high_color;
 
-    private var curSpeedView = View.findDrawableById("CurSpeedLabel");
-    private var desSpeedView = View.findDrawableById("DesSpeedLabel");
-    private var splitSpeedView = View.findDrawableById("SplitSpeedLabel");
-    private var lapTimeView = View.findDrawableById("LapTimeLabel");
+    private var curSpeedView;
+    private var desSpeedView;
+    private var splitSpeedView;
+    private var lapTimeView;
 
     private var xc;
     private var yc;
     private var rc;
 
     function initialize() {
-        System.println("initialize()...");
+        //Application.getApp().cout("initialize() View...");
         View.initialize();
     }
 
     // Load your resources here
     function onLayout(dc) {
+        //Application.getApp().cout("onLayout() ...");
+
         // Must set layout before loading drawables.
         setLayout(Rez.Layouts.MainLayout(dc));
 
@@ -45,6 +47,12 @@ class HR_Speed_TestView extends WatchUi.View {
         me.xc = dc.getWidth() / 2;
         me.yc = dc.getHeight() / 2;
         me.rc = dc.getWidth() / 2;
+
+        me.fg_color = Application.getApp().getProperty("ForegroundColor");
+        me.bg_color = Application.getApp().getProperty("BackgroundColor");
+        me.low_color = Application.getApp().getProperty("BandLow");
+        me.med_color = Application.getApp().getProperty("BandMed");
+        me.high_color = Application.getApp().getProperty("BandHigh");
 
         // Load drawables.
         me.curSpeedView = View.findDrawableById("CurSpeedLabel");
@@ -63,7 +71,7 @@ class HR_Speed_TestView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-        System.println("onShow()...");
+        //Application.getApp().cout("onShow()...");
     }
 
     // Convert a number in seconds to MM:SS format string.
@@ -72,6 +80,7 @@ class HR_Speed_TestView extends WatchUi.View {
         var seconds = (totalSeconds - 60*minutes).toNumber();
         var timeString;
 
+        // TODO: What time to display if test ends mid-lap?
         if (totalSeconds < 0) {
             timeString = "--:--";
         } else {
@@ -146,7 +155,7 @@ class HR_Speed_TestView extends WatchUi.View {
 
     // Update the view
     function onUpdate(dc) {
-        System.println("onUpdate...");
+        //Application.getApp().cout("onUpdate...");
 
         // Update the view
         me.curSpeedView.setText(me.current_speed.format("%.2f").toString());
