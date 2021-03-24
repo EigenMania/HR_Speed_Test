@@ -7,5 +7,5 @@
 
     <property id="initialSpeedKph" type="float">8.0</property>
     <property id="deltaSpeedKph" type="float">0.5</property>
-    <property id="levelDurationS" type="number">5</property>
+    <property id="levelDurationS" type="number">60</property>
 </properties>

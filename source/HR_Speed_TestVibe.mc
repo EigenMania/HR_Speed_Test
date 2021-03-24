@@ -1,6 +1,6 @@
 using Toybox.Attention;
 
-class Vibe {
+class HR_Speed_TestVibe {
     static function activityStart() {
         var vibeProfile = [
             new Attention.VibeProfile(100, 250),

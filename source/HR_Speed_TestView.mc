@@ -7,8 +7,11 @@ using Toybox.Activity;
 using Toybox.ActivityRecording;
 using Toybox.Math;
 
+using HR_Speed_Test_Logger as Logger;
+
 class HR_Speed_TestView extends WatchUi.View {
     // Public Members
+    // TODO: These can be pulled directly from the AppBase.
     var current_speed = 0.0;
     var desired_speed = 0.0;
     var fail_speed_delta = 0.0;
@@ -32,13 +35,13 @@ class HR_Speed_TestView extends WatchUi.View {
     private var rc;
 
     function initialize() {
-        //Application.getApp().cout("initialize() View...");
+        Logger.LOG2("initialize() View...");
         View.initialize();
     }
 
     // Load your resources here
     function onLayout(dc) {
-        //Application.getApp().cout("onLayout() ...");
+        Logger.LOG2("onLayout() ...");
 
         // Must set layout before loading drawables.
         setLayout(Rez.Layouts.MainLayout(dc));
@@ -71,7 +74,7 @@ class HR_Speed_TestView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-        //Application.getApp().cout("onShow()...");
+        Logger.LOG2("onShow()...");
     }
 
     // Convert a number in seconds to MM:SS format string.
@@ -155,7 +158,7 @@ class HR_Speed_TestView extends WatchUi.View {
 
     // Update the view
     function onUpdate(dc) {
-        //Application.getApp().cout("onUpdate...");
+        Logger.LOG2("onUpdate...");
 
         // Update the view
         me.curSpeedView.setText(me.current_speed.format("%.2f").toString());

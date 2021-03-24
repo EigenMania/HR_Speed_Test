@@ -1,0 +1,28 @@
+<fitContributions>
+    <fitField id="0" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder = "0" precision="2"
+    chartTitle="@Strings.desiredSpeedGraphLabel" 
+    dataLabel="@Strings.desiredSpeedDataLabel"
+    unitLabel="@Strings.desiredSpeedUnits" fillColor="#CC66FF" />
+
+    <fitField id="1" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder = "1" precision="2"
+    chartTitle="@Strings.currentSpeedGraphLabel" 
+    dataLabel="@Strings.currentSpeedDataLabel"
+    unitLabel="@Strings.currentSpeedUnits" fillColor="#FFCCCC" />
+
+    <fitField id="2" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder = "2" precision="2"
+    chartTitle="@Strings.splitSpeedGraphLabel" 
+    dataLabel="@Strings.splitSpeedDataLabel"
+    unitLabel="@Strings.splitSpeedUnits" fillColor="#99CCFF" />
+
+    <!-- 
+    <fitField id="3" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder = "3" precision="2"
+    chartTitle="@Strings.deltaDGraphLabel" 
+    dataLabel="@Strings.deltaDDataLabel"
+    unitLabel="@Strings.deltaDUnits" fillColor="#99CCFF" />
+
+    <fitField id="4" displayInChart="true" displayInActivityLaps="false" displayInActivitySummary="false" sortOrder = "4" precision="2"
+    chartTitle="@Strings.deltaTGraphLabel" 
+    dataLabel="@Strings.deltaTDataLabel"
+    unitLabel="@Strings.deltaTUnits" fillColor="#99CCFF" />
+     -->
+</fitContributions>
