@@ -53,6 +53,9 @@ class HR_Speed_TestDelegate extends WatchUi.BehaviorDelegate {
                 Logger.LOG1("Starting the activity!");
                 me.app_base.session.start();
                 me.app_base.session_active = true;
+                me.app_base.split_counter--;
+                me.app_base.updateViewData();
+                WatchUi.requestUpdate();
 
                 // Restart timer when activity starts. This ensures that at least
                 // one timer period (1s) has passed before the activity information

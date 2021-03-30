@@ -32,6 +32,14 @@ class HR_Speed_TestApp extends Application.AppBase {
     var speed_increment = 0.5;
     var fail_speed_delta = 0.25;
 
+    var current_speed_fail = 5.0;
+    var current_speed_fail_counter = 0;
+    var current_speed_fail_counter_thresh = 3;
+
+    var split_speed_fail;
+    var split_speed_fail_counter = 0;
+    var split_speed_fail_counter_thresh = 3;
+
     var desired_speed = start_speed;
     var current_speed = 0.0;
 
@@ -114,14 +122,30 @@ class HR_Speed_TestApp extends Application.AppBase {
                 me.HR_Speed_Test_Vibe.tooSlowWarning();
             }
 
-            // TODO: helper function for failed level. Don't repeat code!
-            //       This implementation could be buggy in the first few seconds
-            //       of a new lap if the speed has excessive noise. Maybe the criteria
-            //       should be being below this speed for consecutive cycles?
+            // If the split speed is lower than a certain threshold during the
+            // given lap for a certain number of consecutive cycles, then we end the test.
             if (me.split_speed < (me.desired_speed - 4 * me.fail_speed_delta)) {
-                // Automatically end activity and save.
-                me.HR_Speed_Test_Vibe.levelFailed();
-                me.HR_Speed_Test_Delegate.onFail();
+                me.split_speed_fail_counter++;
+                if (me.split_speed_fail_counter >= me.split_speed_fail_counter_thresh) {
+                    me.HR_Speed_Test_Vibe.levelFailed();
+                    me.HR_Speed_Test_Delegate.onFail();
+                }
+            } else {
+                me.split_speed_fail_counter = 0;
+            }
+
+            // If the current speed is lower than a certain slow threshold for a certain
+            // number of consecutive cycles, then we end the test. This will stop the
+            // test at any point in the current lap if the user stops running and
+            // starts walking to recover.
+            if (me.current_speed < me.current_speed_fail) {
+                me.current_speed_fail_counter++;
+                if (me.current_speed_fail_counter >= me.current_speed_fail_counter_thresh) {
+                    me.HR_Speed_Test_Vibe.levelFailed();
+                    me.HR_Speed_Test_Delegate.onFail();
+                }
+            } else {
+                me.current_speed_fail_counter = 0;
             }
 
             if (me.split_counter < 0) {
@@ -217,7 +241,7 @@ class HR_Speed_TestApp extends Application.AppBase {
             me.HR_Speed_Test_Delegate.onFail();
         } else {
             // Reset split counters and increment target speed
-            me.split_counter = me.split_time;
+            me.split_counter = me.split_time - 1;
             me.split_distance = 0.0;
             me.desired_speed += me.speed_increment;
             me.last_elapsed_time = me.current_elapsed_time;
@@ -225,6 +249,7 @@ class HR_Speed_TestApp extends Application.AppBase {
         }
         // Add the lap at the end of the callback so that we do not
         // add an empty lap upon failure.
+        Logger.LOG1("new lap!");
         me.session.addLap();
     }
 
